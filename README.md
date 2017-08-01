@@ -38,7 +38,16 @@ setup for mac os x is not trivial, however I found a [gist](https://gist.github.
 which I followed ([this](http://www.pyimagesearch.com/2016/11/28/macos-install-opencv-3-and-python-2-7/)
 guide to install opencv).
 
-scenedetect -i ~/Desktop/raphael\ liszt\ talk.mov -st 00:01:13 -et 00:10:00 -l -d content -t 0.5 -si
+The tool has two modes of detection - content and treshold, both modes have treshold setting (funny, right?)
+I found content much more useful in my case. Since slides don't have much content I had to
+set a really low treshold value. Something like this:
+
+~~~bash
+    scenedetect -i ../talk.mov -st 00:01:13 -d content -t 0.5 -si -o ../scenedetect.csv
+~~~
+
+The real script is [there](extract_timings.sh). Due to small treshold scendetect gives a lot
+of false positives
 
 ....
 Getting timings
