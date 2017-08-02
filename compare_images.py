@@ -94,7 +94,7 @@ def get_test_images(folder):
 print "getting timings"
 timings =  get_timings('scenedetect.csv')
 
-test_images = get_test_images('scenedetect_out')[:130]
+test_images = get_test_images('scenedetect_out')
 
 if len(timings) < len(test_images):
     print "we don't have enough timings ({}) for all images({}), unable to proceed".format( len(timings), len(test_images))
