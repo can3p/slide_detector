@@ -1,10 +1,15 @@
 import os
+import sys
 import numpy as np
 import cv2
 import pickle
 
 # Initiate SIFT detector
 sift = cv2.xfeatures2d.SIFT_create()
+
+def mkdirp(folder):
+    if not os.path.exists(folder):
+        os.makedirs(folder)
 
 def get_decriptors_from_folder(image_folder):
     descriptors = []
@@ -23,7 +28,12 @@ def get_decriptors_from_folder(image_folder):
 
 
 in_folder = 'out'
-out_folder = 'out.pickle'
+
+if len(sys.argv) == 2:
+    in_folder = sys.argv[1]
+
+out_folder = '{}.pickle'.format(in_folder)
+mkdirp(out_folder)
 
 all_files = next(os.walk(in_folder))[2]
 
